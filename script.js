@@ -1,8 +1,14 @@
 function toggleKeyInput() {
     let functionType = document.getElementById("cryptoFunction").value;
     let keyInput = document.getElementById("encryptionKey");
-    keyInput.disabled = functionType.startsWith("SHA") || functionType === "MD5";
+    if (functionType === "AES-Encrypt" || functionType === "AES-Decrypt") {
+        keyInput.disabled = false;
+    } else {
+        keyInput.disabled = true;
+        keyInput.value = "";  
+    }
 }
+
 
 async function processCryptoFunction() {
     let text = document.getElementById("inputText").value;
